@@ -1,9 +1,22 @@
-import { FilterInput } from './Filter.styled';
-export function Filter({ filter }) {
+import PropTypes from 'prop-types';
+import { StyledFilter } from './Filter.styled';
+
+export function Filter({ handleChange }) {
   return (
     <>
-      <h2>Find contacts by name</h2>
-      <FilterInput type="text" name="filter" onChange={filter} />
+      <StyledFilter>
+        Find contacts by name
+        <input
+          type="text"
+          name="filter"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          onChange={handleChange}
+        />
+      </StyledFilter>
     </>
   );
 }
+
+Filter.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+};
